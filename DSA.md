@@ -279,3 +279,8 @@ time complexity:$$O(n)$$
 space complexity:$$O(1)$$
 
 ---
+## [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
+
+### 1 способ:
+
+- 
