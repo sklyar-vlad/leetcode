@@ -14,24 +14,23 @@
  14) [Valid Parentheses](https://leetcode.com/problems/valid-parentheses)
  15) [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
  16) [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)
- 17) 
+ 17) [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls)
+ 18) [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/)
+ 19) [Symmetric Tree](https://leetcode.com/problems/symmetric-tree)
+ 20) 
 
 
 ## 🟢 Easy (Легкие)
-
-Эти задачи отлично подходят для разминки и закрепления базовых структур данных.
 
 | Тема                       | Задача                                                                                                                                                      |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Массивы / Two Pointers** | ~~Two Sum, Move Zeroes, Merge Sorted Array, Squares of a Sorted Array, Remove Duplicates from Sorted Array, Intersection of Two Arrays II, Missing Number~~ |
 | **Строки**                 | ~~Valid Palindrome, Jewels and Stones, First Unique Character in a String, Consecutive Characters, Add Strings, Reverse Words in a String III~~             |
-| **Списки / Стеки**         | ~~Valid Parentheses, Merge Two Sorted Lists, Reverse Linked List~~, Number of Recent Calls, Implement Queue using Stacks                                    |
-| **Деревья**                | Symmetric Tree, Range Sum of BST                                                                                                                            |
+| **Списки / Стеки**         | ~~Valid Parentheses, Merge Two Sorted Lists, Reverse Linked List, Number of Recent Calls, Implement Queue using Stacks~~                                    |
+| **Деревья**                | ~~Symmetric Tree~~, Range Sum of BST                                                                                                                        |
 | **Другое**                 | Summary Ranges, Is Subsequence                                                                                                                              |
 
 ## 🟡 Medium (Средние)
-
-Это «золотой стандарт» технических интервью. Большинство вопросов на собеседованиях попадают именно сюда.
 
 | Тема                       | Задача                                                                                                                                                                                                                                                              |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,12 +44,10 @@
 
 ## 🔴 Hard (Сложные)
 
-Задачи, требующие глубокого понимания алгоритмов или умения оптимизировать решение до предела.
-
-|Задача|Основная тема|
-|---|---|
-|**Median of Two Sorted Arrays**|Бинарный поиск по двум массивам|
-|**Merge k Sorted Lists**|Куча (Heap) / Divide and Conquer|
-|**Trapping Rain Water**|Two Pointers / Стек|
-|**Binary Tree Maximum Path Sum**|Рекурсия / Обход дерева|
-|**Maximal Rectangle**|Стек / Динамическое программирование|
+| Задача                           | Основная тема                        |
+| -------------------------------- | ------------------------------------ |
+| **Median of Two Sorted Arrays**  | Бинарный поиск по двум массивам      |
+| **Merge k Sorted Lists**         | Куча (Heap) / Divide and Conquer     |
+| **Trapping Rain Water**          | Two Pointers / Стек                  |
+| **Binary Tree Maximum Path Sum** | Рекурсия / Обход дерева              |
+| **Maximal Rectangle**            | Стек / Динамическое программирование |

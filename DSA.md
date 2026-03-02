@@ -554,3 +554,139 @@ time complexity: $$ O(n) $$
 space complexity: $$ O(1) $$
 
 ---
+## [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls)
+
+### 1 способ:
+
+- просто реализовать добавление через типы в стандартной библиотеке, пинг через аппенд работает, а удаление истекших запросов через цикл без счетчика
+
+```go
+type RecentCounter struct {
+	requests []int
+}
+
+func Constructor() RecentCounter {
+	return RecentCounter{}
+}
+
+func (this *RecentCounter) Ping(t int) int {
+	this.requests = append(this.requests, t)
+	
+	for this.requests[0] < t - 3000 {
+		this.requests = this.requests[1:]
+	}
+	
+	return len(this.requests)
+}
+```
+time complexity:$$ O(1) $$
+space complexity:$$ O(W) $$
+
+### 2 способ:
+
+- мы вместо того чтобы срезать слайс каждую итерацию цикла, мы найдем нашу границу запросов через бинарный поиск и затем вычтем эту часть
+
+```go
+type RecentCounter struct {
+	requests []int
+}
+
+func Constructor() RecentCounter {
+	return RecentCounter{}
+}
+
+func (this *RecentCounter) Ping(t int) int {
+	this.requests = append(this.requests, t)
+	useless := binarysearch(this.requests, t - 3000)
+	return len(this.requests) - useless
+}
+
+func binarysearch(nums []int, target int) int {
+	l, r := 0, len(nums) - 1
+	
+	for l <= r {
+		mid := (l + r) / 2
+		if num := nums[mid]; num == target {
+			return mid
+		} else if num < target {
+			l = mid + 1
+		} else {
+			r = mid - 1
+		}
+	}
+	
+	return l
+}
+```
+time complexity:$$ O(log(n))$$
+space complexity:$$ O(W) $$
+
+---
+## [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/)
+
+### 1 способ:
+
+- реализация очереди через стек, мы просто реализуем путем переливания из одного в другой и достаем из второго уже все элементы для методов Peak и Pop
+
+```go
+type MyQueue struct {
+	stackPush, stackPop []int
+}
+
+func Constructor() MyQueue {
+	return MyQueue{}
+}
+
+func (this *MyQueue) Push(x int) {
+	this.stackPush = append(this.stackPush, x)
+}
+
+func (this *MyQueue) Pop() {
+	ans := this.Peek()
+	this.stackPop = this.stackPop[:len(this.stackPop)-1]
+	return ans
+}
+
+func (this *MyQueue) Peek() int {
+	if len(this.stackPop) == 0 {
+		for len(this.stackPush) != 0 {
+			this.stackPop = append(this.stackPop, this.stackPush[len(this.stackPush) - 1])
+			this.stackPush = this.stackPush[:len(this.stackPush) - 1]
+		}
+	}
+	
+	return this.stackPop[len(this.stackPop) - 1]
+}
+
+func (this *MyQueue) Empty() bool {
+	return len(this.stackPop) == 0 && len(this.stackPush) == 0
+}
+```
+time complexity:$$ O(1) $$
+space complexity:$$ O(n) $$
+
+---
+## [Symmetric Tree](https://leetcode.com/problems/symmetric-tree)
+
+### 1 способ:
+
+- при помощи рекурсии проверять сначала внешние узлы затем внутрение и так обходить каждую ветку
+
+```go
+func isSymmetric(root *TreeNode) bool {
+	if root == nil {
+		return false
+	}
+	return isMirror(root.Left, root.Right)
+}
+
+func isMirror(left, right *TreeNode) bool {
+	if left == nil || right == nil {
+		return left == right
+	}
+	
+	return (left.Val == right.Val) && isMirror(left.Left, right.Right) && isMirror(left.Right, right.Left)
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
