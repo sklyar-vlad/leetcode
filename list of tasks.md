@@ -17,7 +17,9 @@
  17) [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls)
  18) [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/description/)
  19) [Symmetric Tree](https://leetcode.com/problems/symmetric-tree)
- 20) 
+ 20) [Range sum of BST](https://leetcode.com/problems/range-sum-of-bst)
+ 21) [Summary Ranges](https://leetcode.com/problems/summary-ranges/)
+ 22) 
 
 
 ## 🟢 Easy (Легкие)
@@ -27,7 +29,7 @@
 | **Массивы / Two Pointers** | ~~Two Sum, Move Zeroes, Merge Sorted Array, Squares of a Sorted Array, Remove Duplicates from Sorted Array, Intersection of Two Arrays II, Missing Number~~ |
 | **Строки**                 | ~~Valid Palindrome, Jewels and Stones, First Unique Character in a String, Consecutive Characters, Add Strings, Reverse Words in a String III~~             |
 | **Списки / Стеки**         | ~~Valid Parentheses, Merge Two Sorted Lists, Reverse Linked List, Number of Recent Calls, Implement Queue using Stacks~~                                    |
-| **Деревья**                | ~~Symmetric Tree~~, Range Sum of BST                                                                                                                        |
+| **Деревья**                | ~~Symmetric Tree, Range Sum of BST~~                                                                                                                        |
 | **Другое**                 | Summary Ranges, Is Subsequence                                                                                                                              |
 
 ## 🟡 Medium (Средние)

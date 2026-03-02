@@ -690,3 +690,62 @@ func isMirror(left, right *TreeNode) bool {
 ```
 time complexity:$$ O(n) $$
 space complexity:$$ O(1) $$
+
+---
+## [Range sum of BST](https://leetcode.com/problems/range-sum-of-bst)
+
+### 1 способ:
+
+- в тупую обходим все дерево, причем помним про свойство бинарного дерева, что по левую ветку всегда меньшее число, поэтому если значение узла меньше диапазона то берем правую ветку, ну и рекурсивно пробегаемся по всем узлам и складываем значения
+
+```go
+func rangeSumBST(root *TreeNode, low int, high int) int {
+	if root == nil {
+		return 0
+	}
+	if root.Val < low {
+		return rangeSumBST(root.Right, low, high)
+	}
+	if root.Val > high {
+		return rangeSumBST(root.Left, low, high)
+	}
+	
+	return root.Val + rangeSumBST(root.Left, low, high) + rangeSumBST(root.Right, low, high)
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Summary Ranges](https://leetcode.com/problems/summary-ranges/)
+
+### 1 способ:
+
+- одним циклом пробегаемся по числам, устанавливаем указатель на то число с которого начинаем диапазон, затем если у нас последующие значения составляют ряд то просто скипаем пока не ломается ряд, затем проверяем если указатель и текущий индекс равны значит число вообще одинокое стоит и мы его просто записываем, если же нет, то склеиваем значение под указателем на начале и стрелочку и под индексом, затем перекидываем указатель на следующий от индекса элемент и возвращаем наш резалт после всего
+
+```go
+func summaryRanges(nums []int) []string {
+	if len(nums) == 0 {
+		return nil
+	}
+	
+	result := []string{}
+	head := 0
+	
+	for i := range nums {
+		if i < len(nums) - 1 && nums[i]+1 == nums[i+1] {
+			continue
+		}
+		if head == i {
+			result = append(result, strconv.Itoa(nums[i]))
+		} else {
+			template := strconv.Itoa(nums[head]) + "->" + strconv.Itoa(nums[i])
+			result = append(result, template)
+		}
+		
+		head = i + 1
+	}
+	
+	return result
+}
+```
