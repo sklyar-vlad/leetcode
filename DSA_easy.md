@@ -763,7 +763,7 @@ space complexity:$$ O(n) $$
 func isSubsequence(s string, t string) bool {
 	i, j := 0, 0
 	
-	for i < len(s) && j < len(s) {
+	for i < len(s) && j < len(t) {
 		if s[i] == t[j] {
 			i++
 		}
@@ -775,3 +775,164 @@ func isSubsequence(s string, t string) bool {
 ```
 time complexity:$$ O(n) $$
 space complexity:$$ O(1) $$
+
+---
+## [Contains Duplicate](https://leetcode.com/problems/contains-duplicate)
+
+### 1 способ:
+
+- пробегаемся циклом по числам и инкрементируем в словарик, если это уже больше одного раза инкрементировалось значит дубликаты есть, если мы добежали до конца значит их нет
+
+```go
+func containsduplicate(nums []int) bool {
+	seen := make(map[int]int)
+	
+	for _, value := range nums {
+		seen[value]++
+		if seen[value] > 1 { return true }
+	}
+	
+	return false
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(n) $$
+
+---
+## [Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+
+### 1 способ:
+
+- приводим все к типу uint32 и затем путем переливания битов записываем в новую переменную перевернутое число
+
+```go
+func reverseBits(n int) int {
+	num := uint32(n)
+	var res uint32
+	
+	for i := 0; i < 32; i++ {
+		res = (res << 1) | (num & 1)
+		num >>= 1
+	}
+	
+	return int(res)
+}
+```
+time complexity:$$ O(1) $$
+space complexity:$$ O(1) $$
+
+---
+## [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits)
+
+### 1 способ:
+
+- просто делаем побитовый сдвиг и если крайнее число равно 1 то прибавляем к результату
+
+```go
+func hammingWeight(n int) int {
+	result := 0
+	for i := 0; i < 32; i++ {
+		if (n & 1) == 1 {
+			result ++
+		}
+		n >>= 1
+	}
+	
+	return result
+}
+```
+time complexity:$$ O(1) $$
+space complexity:$$ O(1) $$
+
+---
+## [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle)
+
+### 1 способ:
+
+- метод черепахи и зайчика, один скипает два узла, другой один, если зацикленный список то они встретятся ибо скорость сближения один узел, если заец дойдет до конца значит не зацикленный
+
+```go
+func hasCycle(head *ListNode) bool {
+	fast := head
+	slow := head
+	
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+		
+		if slow == fast {
+			return true
+		}
+	}
+	
+	return false
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Same Tree](https://leetcode.com/problems/same-tree)
+
+### 1 способ:
+
+- при помощи рекурсивной функции просто проверяем значение каждого узла чтобы одни и те же узлы разных деревьев были равны
+
+```go
+func isSameTree(p, q *TreeNode) bool {
+	if p == nil && q == nil {
+		return true
+	}
+	if p == nil || q == nil {
+		return false
+	}
+	if p.Val != q.Val {
+		return false
+	}
+	
+	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree)
+
+### 1 способ: 
+
+- просто дфс проходимся рекурсивно по дереву и ищем максимальную длину каждого узла
+
+```go
+func maxDepth(root *TreeNode) int {
+	if root == nil { return 0 }
+	
+	return 1 + max(maxDepth(root.Left), maxDepth(root.Right))
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+
+### 1 способ:
+
+- рекурсивно так же
+
+```go
+func invertTree(root *TreeNode) *TreeNode {
+	if root != nil {
+		root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+	}
+	
+	return root
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
+
+### 1 способ:
