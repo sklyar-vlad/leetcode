@@ -315,3 +315,181 @@ func maxProduct(nums []int) int {
 ```
 time complexity:$$ O(n) $$
 space complexity:$$ O(1) $$
+
+## [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description)
+
+### 1 способ:
+
+- двумя указателями сужаем окно, за объем берем произведение расстояния между колоннами и высотой минимальной стены, а затем двигаем внутрь указатель от меньшей стены и обновляем макс
+
+```go
+func maxArea(height []int) int {
+	left, right, result := 0, len(height)-1, 0
+	
+	for left < right {
+		minHeight := min(height[left], height[right])
+		area := minHeight * (right - left)
+		result = max(result, area)
+		
+		if height[left] < height[right] {
+			left++
+		} else {
+			right--
+		}
+	}
+	
+	return result
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Partition Labels](https://leetcode.com/problems/partition-labels)
+
+### 1 способ: 
+
+- сохраняем последний индекс каждого символа в мапе, затем второй раз пробегаемся и раздвигаем окно до последнего символа если i == end то сохраняем в наш массив, и передвигаем левый указатель в самый край права
+
+```go
+func partitionLabels(s string) []int {
+	seen := make(map[rune]int)
+	
+	for i, char := range s {
+		seen[char] = i
+	}
+	
+	result := make([]int, 0)
+	start, end := 0, 0
+	
+	for i, char := range s {
+		end = max(end, seen[char])
+		if i == end {
+			result = append(result, end-start+1)
+			start = i+1
+		}
+	}
+	
+	return result
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [String Compression](https://leetcode.com/problems/string-compression)
+
+### 1 способ: 
+
+- мы создаем несколько указателей, пробегаемся по строке и считаем сколько каких у нас символов, как только досчитали то если просто один символ то просто добавляем, если же нет, то еще пробегаемся циклом по нашему счетчику и записываем все цифры в конце возвращаем длину строки
+
+```go
+func compress(chars []byte) int {
+	i, index := 0, 0
+	for i < len(chars) {
+		char := chars[i]
+		count := 0
+		for i < len(chars) && chars[i] == char {
+			count++
+			i++
+		}
+		if count == 1 {
+			chars[index] = char
+			index++
+		} else {
+			chars[index] = char
+			index++
+			for _, digit := range []byte(strconv.Itoa(count)) {
+				chars[index] = digit
+				index++
+			}
+		}
+	}
+	
+	return index
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ o(1) $$
+
+---
+## [Jump Game](https://leetcode.com/problems/jump-game)
+
+### 1 способ: 
+
+- здесь мы жадным алгоритмом считаем наш максимум по прыжкам и затем если мы дошли до момента что до текущего индекса нельзя допрыгнуть макс меньше то возвращаем фолс
+
+```go
+func canJump(nums []int) bool {
+	maxJump := 0
+	for i := 0; i < len(nums); i++ {
+		if i > maxJump { return false }
+		maxJump = max(maxJump, nums[i]+i)
+	}
+	
+	return true
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person)
+
+### 1 способ:
+
+- пробегаемся по всем местам и обрабатываем случаи, либо самое крайнее левое место, либо самое крайнее правое, либо ровно посередине от чуваков
+
+```go
+func maxDistToClosest(seats []int) int {
+	result, previous := 0, -1
+	for i := 0; i < len(seats); i++ {
+		if seats[i] == 1 {
+			if previous == -1 {
+				result = i
+			} else {
+				result = max(result, (i - previous) / 2)
+			}
+			previous = i
+		}
+	}
+	result = max(result, len(seats)-previous-1)
+	return result
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals)
+
+### 1 способ: 
+
+- сначала сортируем по концу интервалов, затем те интервалы которые начинаются до самого первого конца, удаляем и увеличиваем счетчик, а те которые идут после обновляем счетчик
+
+```go
+func eraseOverlapIntervals(intervals [][]int) int {
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][1] < intervals[j][1]
+	})
+	
+	lastEnd := intervals[0][1]
+	count := 0
+	
+	for i := 1; i < len(intervals); i++ {
+		if intervals[i][0] < lastEnd {
+			count++
+		} else {
+			lastEnd = intervals[i][1]
+		}
+	}
+	
+	return count
+}
+```
+time complexity:$$ O(n \cdot log(n)) $$
+space complexity:$$ O(1) $$
+
+---
+
+

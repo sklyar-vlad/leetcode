@@ -47,21 +47,21 @@
 # 🟡 Medium
 
 ## Sliding Window
-33) Longest Substring Without Repeating Characters  ⛔️
-34) Find All Anagrams in a String  ⛔️
-35) Permutation in String  ⛔️
+33) Longest Substring Without Repeating Characters  
+34) Find All Anagrams in a String  
+35) Permutation in String  
 36) Longest Substring with At Most Two Distinct Characters  ⛔️
 37) Max Consecutive Ones II  ⛔️
-38) Max Consecutive Ones III  ⛔️
-39) Longest Subarray of 1’s After Deleting One Element  ⛔️
-40) Longest Repeating Character Replacement  ⛔️
+38) Max Consecutive Ones III  
+39) Longest Subarray of 1’s After Deleting One Element  
+40) Longest Repeating Character Replacement  
 
 ## Префиксные суммы / Хеш + массив
-41) Subarray Sum Equals K  ⛔️
-42) Continuous Subarray Sum  ⛔️
-43) Product of Array Except Self  ⛔️
-44) Maximum Subarray  ⛔️
-45) Maximum Product Subarray  ⛔️
+41) Subarray Sum Equals K  
+42) Continuous Subarray Sum  
+43) Product of Array Except Self  
+44) Maximum Subarray  
+45) Maximum Product Subarray  
 
 ## Two Pointers / Greedy
 46) Container With Most Water  
