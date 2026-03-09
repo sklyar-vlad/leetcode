@@ -82,11 +82,11 @@
 57) Top K Frequent Elements  
 
 ## Дизайн структур данных
-58) LRU Cache  
-59) Insert Delete GetRandom O(1)  
+58) LRU Cache
+59) Insert Delete GetRandom O(1)
 60) Design Hit Counter  👑
 61) Zigzag Iterator  👑
-62) Flatten Nested List Iterator  
+62) Flatten Nested List Iterator
 63) Encode and Decode Strings  👑
 
 ## Списки

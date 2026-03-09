@@ -1,4 +1,4 @@
-## [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
+	## [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
 ### 1 способ:
 
 - при помощи скользящего окна и вспомогательного массива где будем указывать последний индекс встречающегося символа
@@ -807,4 +807,258 @@ func (this *RandomizedSet) GetRandom() int {
 ```
 
 ---
-## 
+## [Flatten Nested List Iterator](https://leetcode.com/problems/flatten-nested-list-iterator)
+
+### 1 способ: 
+
+- рекурсивный вызов стуктурой самой себя
+
+```go
+type NestedIterator struct {
+	index int
+	nestedIterator *NestedIterator
+	nestedList []*NestedInteger
+}
+
+func Constructor(nestedList []*NestedInteger) *NestedIterator {
+	return &NestedIterator{
+		index: -1,
+		nestedList: nestedList,		
+	}
+}
+
+func (this *NestedIterator) Next() int {
+	if nestedIterator := this.nestedIterator; nestedIterator != nil {
+		return nestedIterator.Next()
+	}
+	
+	this.nestedList[this.index].GetInteger()
+}
+
+func (this *NestedIterator) HasNext() bool {
+	if nestedIterator := this.nestedIterator; nestedIterator != nil {
+		if nestedIterator.HasNext() {
+			return true
+		}
+		this.nestedIterator = nil
+	}
+	
+	this.index++
+	if this.index == len(this.nestedList) {
+		return false
+	}
+	
+	if this.nestedList[this.index].isInteger() {
+		return true
+	}
+	
+	this.nestedIterator = Constructor(this.nestedList[this.index].GetList())
+	return this.HasNext()
+}
+```
+
+---
+##  [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+
+### 1 способ:
+
+- сложение в столбик как и в sum strings с переносом остатка в уме
+
+```go
+func addTwoNumbers(l1, l2 *ListNode) *ListNode {
+	dummy, carry := new(ListNode), 0
+	for node := dummy; l1 != nil || l2 != nil || carry > 0; node = node.Next {
+		if l1 != nil {
+			carry += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			carry += l2.Val
+			l2 = l2.Next
+		}
+		node.Next = &ListNode{carry%10, nil}
+		carry /= 10
+	}
+	
+	return dummy.Next
+}
+```
+time complexity:$$ O(max(n,m)) $$
+space complexity:$$ O(max(n,m)) $$
+
+---
+## [Remove Nth Node from End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
+
+### 1 способ: 
+
+- используем два указателя, когда мы прошли первым указателям n чисел, то начинаем идти вместе со вторым, тогда между ними разница будет n и второй в конце будет указывать на узел который стоит перед удаляемым
+
+
+```go 
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	dummyHead := &ListNode{-1, head}
+	current, previous := dummyHead, dummyHead
+	for current.Next != nil {
+		if n <= 0 {
+			previous = previous.Next
+		}
+		current = current.Next
+		n--
+	}
+	nthNode := previous.Next
+	previous.Next = nthNode.Next
+	return dummyHead.Next
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Reorder List](https://leetcode.com/problems/reorder-list/)
+
+### 1 способ:
+
+- мы двумя указателями идем по списку, когда один доходит до конца, другой останавливается на середине, затем мы переворачиваем весь оставшийся конец и затем идем от конца и начала списка и зигзагом сшиваем
+
+```go
+func reorderList(head *ListNode) {
+	if head == nil || head.Next == nil {
+		return
+	}
+	
+	slow, fast := head, head
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		slow = slow.Next
+	}
+	
+	var previous *ListNode
+	for slow != nil {
+		next := slow.Next
+		slow.Next = previous
+		previous = slow
+		slow = next
+	}
+	
+	first := head
+	for previous.Next != nil {
+		first.Next, first = previous, first.Next
+		previous.Next, previous = first, previous.Next
+	}
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description)
+
+### 1 способ:
+
+- бинарным поиском проверяем отрезки, если левый меньше середины значит он упорядочен, если нет, значит правый упорядочен и ищем в них
+
+```go
+func search(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+	for left <= right {
+		mid := (left + right)/2
+		
+		if nums[mid] == target {
+			return mid
+		}
+		if nums[left] <= nums[mid] {
+			if nums[left] <= target && target <= nums[mid] {
+				right = mid-1
+			} else {
+				left = mid+1
+			}
+		} else {
+			if nums[mid] <= target && target <= nums[right] {
+				left = mid+1
+			} else {
+				right = mid-1
+			}
+		}
+	}
+	
+	return -1
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(1) $$
+
+---
+## [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+
+### 1 способ: 
+
+- через бинарный поиск сужаем наше окно до тех пор пока не найдем излом
+
+```go
+func findMin(nums []int) int {
+	left, right := 0, len(nums)-1
+	
+	for left < right {
+		mid := (left + right) / 2
+		if nums[mid] > nums[right] {
+			left = mid+1
+		} else {
+			right = mid
+		}
+	}
+	
+	return nums[left]
+}
+```
+time complexity:$$ O(log(n)) $$
+space complexity:$$ O(1) $$
+
+---
+## [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description)
+
+### 1 способ: 
+
+- рекурсивно проходим по самому левому, если не находим ответ то идем вправо и вот так перебираем значения и уменьшаем счетчик, если счетчик 0, то мы нашли ответ, просто перебираем ветви слева направо
+
+```go
+func kthSmallest(root *TreeNode, k int) int {
+	return InOrderTravel(root, &k)
+}
+
+func InOrderTravel(node *TreeNode, k *int) int {
+	result := 0
+	if node == nil { return 0 }
+	result = max(result, InOrderTravel(node.Left, k))
+	*k--
+	if *k == 0 { return node.Val }
+	result = max(result, InOrderTravel(node.Right, k))
+	return result
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree)
+
+### 1 способ:
+
+- делаем дфс, и задаем границы и создаем некий коридор чтобы значения узла находилось между этими границами иначе дерево не валидно
+
+```go
+func isValidBST(root *TreeNode) bool {
+	return isValid(root, nil, nil)
+}
+
+func isValid(node, mini, maxi *TreeNode) bool {
+	if node == nil { return true }
+	if mini != nil && node.Val <= mini.Val { return false }
+	if maxi != nil && node.Val >= maxi.Val { return false }
+	return isValid(node.Left, mini, node) && isValid(node.Right, node, maxi)
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(h) $$
+
+---
+## [Binary Tree Level Order Traversal]()
