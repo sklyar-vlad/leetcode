@@ -1234,4 +1234,225 @@ func dfs(node *Node, copies []*Node) {
 	}
 }
 ```
+time complexity:$$ O(V+E) $$
+space complexity:$$ O(E) $$
 
+---
+## [Course Schedule](https://leetcode.com/problems/course-schedule)
+
+### 1 способ:
+
+- короче завести два массива, по индексу 0 мы будем класть все курсы которые нам становятся доступны после прохождения курса 0 и тд, во втором массиве мы считаем сколько курсов нужно пройти для каждого курса
+
+```go
+func canFinish(numCourses int, prerequisites [][]int) bool {
+	graph := make([][]int, numCourses)
+	degree := make([]int, numCourses)
+	
+	for _, prerequisite := range prerequisites {
+		graph[prerequisite[1]] = append(graph[prerequisite[1]], prerequisite[0])
+		degree[prerequisite[0]]++
+	}
+	
+	bfs := make([]int, 0)
+	for course, d := range degree {
+		if d == 0 {
+			bfs = append(bfs, course)
+		}
+	}
+	
+	for i := 0; i < len(bfs); i++ {
+		course := bfs[i]
+		for _, j := range graph[course] {
+			degree[j]--
+			if degree[j] == 0 {
+				bfs = append(bfs, j)
+			}
+		}
+	}
+	if len(bfs) == numCourses {
+		return true
+	}
+	
+	return false
+}
+```
+time complexity:$$ O(V+E) $$
+space complexity:$$ O(V+E) $$
+
+---
+## [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/description)
+
+### 1 способ:
+
+- пиздец
+
+```go
+func pacificAtlantic(heights [][]int) [][]int {
+	if len(heights) == 0 { return nil }
+	
+	result := [][]int{}
+	row, column := len(heights), len(heights[0])
+	
+	pacific, atlantic := make([][]bool, row), make([][]bool, row)
+	
+	for i := 0; i < row; i++ {
+		pacific[i] = make([]bool, column)
+		atlantic[i] = make([]bool, column)
+	}
+	
+	for i := 0; i < column; i++ {
+		dfs(0, i, heights, pacific, heights[0][i])
+		dfs(row-1, i, heights, atlantic, heights[row-1][i])
+	}
+	
+	for i := 0; i < row; i++ {
+		dfs(i, 0, heights, pacific, heights[i][0])
+		dfs(i, column-1, heights, atlantic, heights[i][column-1])
+	}
+	
+	for i := 0; i < row; i++ {
+		for j := 0; j < column; j++ {
+			if pacific[i][j] && atlantic[i][j] {
+				result = append(result, []int{i, j})
+			}
+		}
+	}
+	return result
+}
+
+func dfs(i, j int, heights [][]int, visited [][]bool, prevHeight int) {
+	row, column := len(heights), len(heights[0])
+	
+	if i < 0 || i >= row || j < 0 || j >= column || heights[i][j] < prevHeight || visited[i][j] {
+		return
+	}
+	
+	visited[i][j] = true
+	
+	dfs(i+1, j, heights, visited, heights[i][j])
+	dfs(i-1, j, heights, visited, heights[i][j])
+	dfs(i, j+1, heights, visited, heights[i][j])
+	dfs(i, j-1, heights, visited, heights[i][j])
+}
+```
+time complexity:$$ O(n \cdot m) $$
+space complexity:$$ O(n \cdot m) $$
+
+---
+## [Generate Parentheses](https://leetcode.com/problems/generate-parentheses)
+
+### 1 способ:
+
+- рекурсивно записываем открывающиеся скобки до тех пор пока их меньше входного параметра и записываем закрывающиеся если их меньше чем открывающихся
+
+```go
+func generateParenthesis(n int) []string {
+	result := []string{}
+	backtrack("", 0, 0, &result, n)
+	return result
+}
+
+func backtrack(current string, open, close int, result *[]string, n int) {
+	if len(current) == n*2 {
+		*result = append(*result, current)
+		return
+	}
+	
+	if open < n {
+		backtrack(current+"(", open+1, close, result, n)
+	}
+	if close < open {
+		backtrack(current+")", open, close+1, result, n)
+	}
+}
+```
+time complexity:$$ O(4^n / n \sqrt n) $$ сложность порядка числа Каталана
+space complexity:$$ O(n) $$
+
+---
+## [Combination Sum](https://leetcode.com/problems/combination-sum/description)
+
+### 1 способ:
+
+-  Идея заключается в рекурсивном обходе дерева решений (backtracking), где на каждом шаге мы либо добавляем текущее число в комбинацию и уменьшаем искомую сумму, либо переходим к следующему числу, «откатываясь» назад при превышении лимита или достижении цели.
+
+```go
+func combinationSum(candidates []int, target int) [][]int {
+	result := make([][]int, 0)
+	current := make([]int, 0)
+	sort.Ints(candidates)
+	findCombinations(0, target, candidates, current, &result)
+	return result
+}
+
+func findCombinations(index, target int, candidates, current []int, result *[][]int) {
+	if target == 0 {
+		combination := make([]int, len(current))
+		copy(combination, current)
+		*result = append(*result, combination)
+		return
+	}
+	
+	for i := index; i < len(candidates); i++ {
+		if candidates[i] > target {
+			break
+		}
+		current = append(current, candidates[i])
+		findCombinations(i, target-candidates[i], candidates, current, result)
+		current = current[:len(current)-1]
+	}
+}
+```
+time complexity:$$ O(N^{T/M}) $$
+space complexity:$$ O(T/M) $$
+
+---
+## [Word Search](https://leetcode.com/problems/word-search)
+
+### 1 способ:
+
+- при помощи дфс просто проверяем буквы во всех направлениях
+
+```go
+func exist(board [][]byte, word string) bool {
+	if len(board) == 0 || len(board[0]) == 0 || len(word) == 0 {
+		return false
+	}
+	
+	for x := 0; x < len(board); x++ {
+		for y := 0; y < len(board[0]); y++ {
+			if board[x][y] == word[0] && dfs(x, y, board, word) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func dfs(x, y int, board [][]byte, word string) bool {
+	if len(word) == 0 { return true }
+	if x < 0 || y < 0 || x >= len(board) || y >= len(board[0]) || board[x][y] != word[0] {
+		return false
+	}
+	
+	template := board[x][y]
+	board[x][y] = '#'
+	
+	result := dfs(x+1, y, board, word[1:]) ||
+			  dfs(x-1, y, board, word[1:]) ||
+			  dfs(x, y+1, board, word[1:]) ||
+			  dfs(x, y-1, board, word[1:])
+			  
+	board[x][y] = template
+	return result
+}
+```
+time complexity:$$ O(N \cdot M \cdot 3^L) $$space complexity:$$ O(N \cdot M) $$
+
+---
+## [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description)
+
+### 1 способ:
+
+- 
