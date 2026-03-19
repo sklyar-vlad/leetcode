@@ -833,7 +833,7 @@ func hammingWeight(n int) int {
 	result := 0
 	for i := 0; i < 32; i++ {
 		if (n & 1) == 1 {
-			result ++
+			result++
 		}
 		n >>= 1
 	}

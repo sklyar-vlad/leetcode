@@ -410,7 +410,7 @@ func compress(chars []byte) int {
 }
 ```
 time complexity:$$ O(n) $$
-space complexity:$$ o(1) $$
+space complexity:$$ O(1) $$
 
 ---
 ## [Jump Game](https://leetcode.com/problems/jump-game)
@@ -657,6 +657,7 @@ func topKFrequent(nums []int, k int) []int {
 		for _, num := range bucket[i] {
 			if k > 0 {
 				result = append(result, num)
+				k--
 			}
 		}	
 	}
@@ -1631,6 +1632,174 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description)
+
+### 1 способ:
+
+- алгоритм манахера мы идем по каждому значению и проводим от него палиндром если он находится не в зеркальной теме, если находится то сразу пиздим у зеркального товарища нашего длину палиндрома, если мы вышли за границу, то обнуляем правый край и передвигаем центр
+
+```go
+func longestPalindrome(s string) string {
+	template := "^#" + strings.Join(strings.Split(s, ""), "#") + "#$"
+	seen := make([]int, len(template))
+	center, right := 0, 0
+	
+	for i := 1; i < len(template)-1; i++ {
+		if i < right {
+			seen[i] = min(right-i, seen[center*2-i])
+		}
+		for template[i-1-seen[i]] == template[i+1+seen[i]] {
+			seen[i]++
+		}
+		if seen[i] + i > right {
+			center, right = i, i + seen[i]
+		}
+	}
+	
+	maxLen, centerIndex := 0, 0
+	for i, value := range seen {
+		if maxLen < value {
+			maxLen = value
+			centerIndex = i
+		}
+	}
+	
+	return s[(centerIndex-maxLen)/2:(centerIndex+maxLen)/2]
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(n) $$
+
+---
+## [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/description)
+
+### 1 способ:
+
+- по алгоритму манахера собираем количество палиндромов
+
+```go
+func countSubstrings(s string) int {
+	template := "^#" + strings.Join(strings.Split(s, ""), "#") + "#$"
+	seen := make([]int, len(template))
+	result, center, right := 0, 0, 0
+	
+	for i := 1; i < len(template)-1; i++ {
+		if i < right {
+			seen[i] = min(right-i, seen[center*2 - i])
+		}
+		for template[i-1-seen[i]] == template[i+1+seen[i]] {
+			seen[i]++
+		}
+		if seen[i] + i > right {
+			center, right = i, seen[i] + i
+		}
+		result += (seen[i] + 1)/2
+	}
+	
+	return result
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(n) $$
+
+---
+## [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description)
+
+### 1 способ:
+
+- мы создаем массив в котором последовательно сохраняем сколько схожих элементов у нас совпало, если совпало то берем предыдущее и +1, если нет, то берем максимум
+
+```go
+func longestCommonSubsequence(text1, text2 string) int {
+	seen := make([][]int, len(text1)+1)
+	for i := 0; i < len(text1)+1; i++ {
+		seen[i] = make([]int, len(text2)+1)
+	}
+	
+	for i := 1; i < len(text1)+1; i++ {
+		for j := 1; j < len(text2)+1; j++ {
+			if text1[i-1] == text2[j-1] {
+				seen[i][j] = seen[i-1][j-1] + 1
+			} else {
+				seen[i][j] = max(seen[i-1][j], seen[i][j-1])
+			}
+		}
+	}
+	
+	return seen[len(text1)][len(text2)]
+}
+```
+time complexity:$$ O(n \cdot m) $$
+space complexity:$$ O(n \cdot m) $$
+
+---
+## [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence)
+
+### 1 способ:
+
+- собираем подпоследовательность, расширяем если крайний элемент меньше найденного, если нет то ищем индекс на который можем поставить найденное число
+
+```go
+func lengthOfLIS(nums []int) int {
+	result := make([]int, 0)
+	for i := 0; i < len(nums); i++ {
+		if len(result) == 0 || result[len(result)-1] < nums[i] {
+			result = append(result, nums[i])
+		} else {
+			index := binarySearch(result, nums[i])
+			result[index] = nums[i]
+		}
+	}
+	
+	return len(result)
+}
+
+func binarySearch(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+	for left <= right {
+		middle := (left+right)/2
+		if nums[middle] < target {
+			left = middle + 1
+		} else {
+			right = middle - 1
+		}
+	}
+	
+	return left
+}
+```
+time complexity:$$ O(n \cdot log(n)) $$
+space complexity:$$ O(n) $$
+
+---
+## [Coin Change](https://leetcode.com/problems/coin-change/description)
+
+### 1 способ:
+
+- при помощи подходи динамического программирования создаем вспомогательный массив в котором сохраняем все суммы до нашей цели сколько минимум монет понадобилось для промежуточной суммы
+
+```go
+func coinChange(coins []int, amount int) int {
+	seen := make([]int, amount+1)
+	for templateSum := 1; templateSum <= amount; templateSum++ {
+		seen[templateSum] = math.MaxInt32
+		for _, coin := range coins {
+			if templateSum-coin >= 0 && seen[templateSum-coin] != math.MaxInt32 {
+				seen[templateSum] = min(seen[templateSum], seen[templateSum-coin]+1)
+			}
+		}
+	}
+	
+	if seen[amount] == math.MaxInt32 {
+		return -1
+	}
+	return seen[amount]
+}
+```
+time complexity:$$ O(n) $$
+space complexity:$$ O(n) $$
+
+---
+## [Simplify Path](https://leetcode.com/problems/simplify-path/description)
 
 ### 1 способ:
 
