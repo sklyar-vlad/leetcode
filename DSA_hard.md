@@ -1,9 +1,5 @@
 ## [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring)
 
-### 1 способ:
-
-- скользящее окно и паттерн нашей строки
-
 ```go
 func minWindow(s string, t string) string {
 	if len(s) < len(t) { return "" }
@@ -44,10 +40,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/description)
-
-### 1 способ: 
-
-- пишем вспомогательную функцию для сливания двух списков, а затем идем по списку списков и парами сливаем
 
 ```go
 func mergeTwoLists(l1, l2 *ListNode) *ListNode  {
@@ -142,10 +134,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description)
 
-### 1 способ:
-
-- двумя указателями сдвигаемся к центру и если у нас меньше левая стена то сравниваем текущий столбик с предыдущим и складываем разность и так же справа
-
 ```go
 func trap(height []int) int {
 	if len(height) == 0 { return 0 }
@@ -172,10 +160,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description)
-
-### 1 способ:
-
--  при помощи дфс обходим весь список и собираем сумму
 
 ```go
 func maxPathSum(root *TreeNode) int {
@@ -247,10 +231,6 @@ func (this *Codec) deserialize(data string) *TreeNode {
 ---
 ## [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/description)
 
-### 1 способ:
-
-- строим гистрограмму для каждой строки и затем берем максимальную по величине
-
 ```go
 func maximalRectangle(matrix [][]byte) int {
 	if len(matrix) == 0 { return 0 }
@@ -305,10 +285,6 @@ space complexity:$$ O(m) $$
 ---
 ## [Median of Two Sorted Array](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 
-### 1 способ:
-
-- просто двумя указателями идем по двум массивам чей элемент тот и добавляем и сдвигаем указатель а потом возвращаем середину
-
 ```go
 func findMedianSortedArrays(nums1, nums2 []int) int {
 	merged := make([]int, 0, len(nums1)+len(nums2))
@@ -347,10 +323,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Word Search II](https://leetcode.com/problems/word-search-ii)
-
-### 1 способ:
-
-- при помощи префиксного дерева и прохода в глубину
 
 ```go
 var directions = [4][2]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}

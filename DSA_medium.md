@@ -1,7 +1,4 @@
 ## [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
-### 1 способ:
-
-- при помощи скользящего окна и вспомогательного массива где будем указывать последний индекс встречающегося символа
 
 ```go
 func lengthOfLongestSubstring(s string) int {
@@ -23,10 +20,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/description)
-
-### 1 способ:
-
-- сначала проверяем что у нас строка по которой будем искать аннаграмы длиннее чем строка паттерн, затем создаем два массива которые будут иметь длину равную количеству символов, и заполняем наш паттерн через разность с символом 'a' который дает индекс латинской буквы в массиве, и так же заполняем первое окно нашей строки под проверку, затем бежим циклом окном проверяем эти массивы если они равны значит индекс подходит, если нет то идем дальше и проверяем что у нас не зашли за границу строки и меняем положение окна.
 
 ```go
 func findAnagrams(s string, p string) []int {
@@ -59,10 +52,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Permutation in String](https://leetcode.com/problems/permutation-in-string)
 
-### 1 способ:
-
-- та такой же способ что и в предыдущей задаче, через скользящее окно и вспомогательные массивы
-
 ```go
 func checkInclusion(s1 string, s2 string) bool {
 	if len(s2) < len(s1) { return false }
@@ -89,11 +78,7 @@ time complexity:$$ O(n) $$
 space complexity:$$ O(1) $$
 
 ---
-## [Max Consecutive Ones |||](https://leetcode.com/problems/max-consecutive-ones-iii)
-
-### 1 способ:
-
-- скользящим окном, пока k достаточно на нулей, то увеличиваем окно, когда недостаточно то левую границу перебираем
+## [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii)
 
 ```go
 func longestOnes(nums []int, k int) int {
@@ -123,10 +108,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description)
 
-### 1 способ:
-
-- точно такой же способ при помощи скользящего окна
-
 ```go
 func longestSubarray(nums []int) int {
 	l, k, result := 0, 0, 0
@@ -154,10 +135,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
 
-### 1 способ:
-
-- скользящее окно и вспомогательный массив, мы узнаем счетчик максимально повторяющегося элемента, затем если оно  у нас превышает лимит то сдвигаем левую рамку окна
-
 ```go
 func characterReplacement(s string, k int) int {
 	seen := make(map[byte]int)
@@ -183,10 +160,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Subarray sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k)
 
-### 1 способ: 
-
-- при помощи метода префиксных сумм и хеш-мапой в которой мы будем хранить все состояния нашей префиксной суммы, если у нас разность преф суммы на какой-то итерации и наше искомое число равны, значит добавляем к нашему результату количество таких сумм
-
 ```go
 func subarraySum(nums []int, k int) int {
 	seen := make(map[int]int)
@@ -209,10 +182,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum)
-
-### 1 способ: 
-
-- при помощи метода префиксных сумм записывать в хеш-мапу остатки префиксной суммы в мапу и затем проверять что разница индексов более 2
 
 ```go
 func checkSubarraySum(nums []int, k int) bool {
@@ -239,10 +208,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description)
-
-### 1 способ:
-
--  при помощи петода префиксных сумм мы сохраняем сначала первым циклом произведения всех элементов слева, а затем проходимся вторым циклом с конца до начала и дополняем произведениями элементов справа
 
 ```go
 func productExceptSelf(nums []int) []int {
@@ -271,10 +236,6 @@ extra space complexity:$$ O(1) $$
 ---
 ## [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description)
 
-### 1 способ:
-
-- просто проходим по массиву и сохраняем префиксную сумму, если она больше нашего изначального максимум, то обновляем максимум. Если префикс сумма стала меньше нуля, то смысла ее нести за собой нет, мы ее обнуляем
-
 ```go
 func maxSubArray(nums []int) int {
 	result, prefixSum := nums[0], 0
@@ -294,10 +255,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description)
 
-### 1 способ:
-
-- короче завести три переменные, максимальное произведение, минимальное произведение и наш ответ, идти по массиву и сохранять если у нас произведение меняется
-
 ```go
 func maxProduct(nums []int) int {
 	productMax, productMin, result := nums[0], nums[0], nums[0]
@@ -316,11 +273,8 @@ func maxProduct(nums []int) int {
 time complexity:$$ O(n) $$
 space complexity:$$ O(1) $$
 
+---
 ## [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description)
-
-### 1 способ:
-
-- двумя указателями сужаем окно, за объем берем произведение расстояния между колоннами и высотой минимальной стены, а затем двигаем внутрь указатель от меньшей стены и обновляем макс
 
 ```go
 func maxArea(height []int) int {
@@ -346,10 +300,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Partition Labels](https://leetcode.com/problems/partition-labels)
-
-### 1 способ: 
-
-- сохраняем последний индекс каждого символа в мапе, затем второй раз пробегаемся и раздвигаем окно до последнего символа если i == end то сохраняем в наш массив, и передвигаем левый указатель в самый край права
 
 ```go
 func partitionLabels(s string) []int {
@@ -378,10 +328,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [String Compression](https://leetcode.com/problems/string-compression)
-
-### 1 способ: 
-
-- мы создаем несколько указателей, пробегаемся по строке и считаем сколько каких у нас символов, как только досчитали то если просто один символ то просто добавляем, если же нет, то еще пробегаемся циклом по нашему счетчику и записываем все цифры в конце возвращаем длину строки
 
 ```go
 func compress(chars []byte) int {
@@ -415,10 +361,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Jump Game](https://leetcode.com/problems/jump-game)
 
-### 1 способ: 
-
-- здесь мы жадным алгоритмом считаем наш максимум по прыжкам и затем если мы дошли до момента что до текущего индекса нельзя допрыгнуть макс меньше то возвращаем фолс
-
 ```go
 func canJump(nums []int) bool {
 	maxJump := 0
@@ -435,10 +377,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person)
-
-### 1 способ:
-
-- пробегаемся по всем местам и обрабатываем случаи, либо самое крайнее левое место, либо самое крайнее правое, либо ровно посередине от чуваков
 
 ```go
 func maxDistToClosest(seats []int) int {
@@ -462,10 +400,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals)
-
-### 1 способ: 
-
-- сначала сортируем по концу интервалов, затем те интервалы которые начинаются до самого первого конца, удаляем и увеличиваем счетчик, а те которые идут после обновляем счетчик
 
 ```go
 func eraseOverlapIntervals(intervals [][]int) int {
@@ -492,10 +426,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Merge Intervals](https://leetcode.com/problems/merge-intervals)
-
-### 1 способ: 
-
-- сортируем интервалы по их началу, добавляем в наш список самый первый а затем проверяем со следующим если начало после конца то добавляем в список, если нет то увеличиваем первый интервал
 
 ```go
 func sortIntervals(intervals [][]int) {
@@ -531,10 +461,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Insert Interval](https://leetcode.com/problems/insert-interval/description)
 
-### 1 способ: 
-
-- делаем три цикла, в первом цикле добавляешь в конечный массив те интервалы которые заканчиваются до нового интервала, второй цикл проверяет если интервал начался до того как закончился новый, то проверяем и расширяем границы нового интервала этими интервалами, третий цикл добавляет оставшиеся интервалы
-
 ```go
 func insert(intervals [][]int, newInterval []int) [][]int {
 	result := make([][]int, len(intervals)+1)
@@ -566,10 +492,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Interval List Intersections](https://leetcode.com/problems/interval-list-intersections)
-
-### 1 способ:
-
--  идти по двум спискам, брать максимальный минимум от каждого и минимальный максимум от каждого, если начало меньше равно конца то добавляем этот интервал в наш результат, затем если конец равен концу одного из списков то мы передвигаем указатель
 
 ```go
 func getInterval(A, B []int) (int, int) {
@@ -604,10 +526,6 @@ space complexity:$$ O(min(n, m)) $$
 ---
 ## [Group Anagrams](https://leetcode.com/problems/group-anagrams)
 
-### 1 способ:
-
-- заводим словарь в котором по ключу будем хранить паттерн, те слова которые удовлетворяют паттерну кладем под этот ключ в словаре
-
 ```go
 func groupAnagrams(strs []string) [][]string {
 	seen := map[[26]int][]string{}
@@ -633,10 +551,6 @@ space complexity:$$ O(n \cdot m) $$
 
 ---
 ## [Top K Frequent](https://leetcode.com/problems/top-k-frequent-elements/description)
-
-### 1 способ: 
-
-- создаем словарь где по значению записываем сколько раз встретилось в массиве, затем создаем двумерный массив где по индексу повтора будут лежать эти значения ну и будем идти с конца этого массива и сохранять в новый уже самые частые символы
 
 ```go
 func topKFrequent(nums []int, k int) []int {
@@ -670,10 +584,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [LRU Cache](https://leetcode.com/problems/lru-cache)
-
-### 1 способ:
-
-- через двусвязный список и хеш-мапу
 
 ```go
 type LRUCache struct {
@@ -754,10 +664,6 @@ func (this *LRUCache) insert(node *Node) {
 ---
 ## [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description)
 
-### 1 способ: 
-
-- через массивчик и хеш-мапу
-
 ```go
 type RandomizedSet struct {
 	arr []int
@@ -810,10 +716,6 @@ func (this *RandomizedSet) GetRandom() int {
 ---
 ## [Flatten Nested List Iterator](https://leetcode.com/problems/flatten-nested-list-iterator)
 
-### 1 способ: 
-
-- рекурсивный вызов стуктурой самой себя
-
 ```go
 type NestedIterator struct {
 	index int
@@ -861,10 +763,6 @@ func (this *NestedIterator) HasNext() bool {
 ---
 ##  [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 
-### 1 способ:
-
-- сложение в столбик как и в sum strings с переносом остатка в уме
-
 ```go
 func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 	dummy, carry := new(ListNode), 0
@@ -890,11 +788,6 @@ space complexity:$$ O(max(n,m)) $$
 ---
 ## [Remove Nth Node from End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list)
 
-### 1 способ: 
-
-- используем два указателя, когда мы прошли первым указателям n чисел, то начинаем идти вместе со вторым, тогда между ними разница будет n и второй в конце будет указывать на узел который стоит перед удаляемым
-
-
 ```go 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	dummyHead := &ListNode{-1, head}
@@ -916,10 +809,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Reorder List](https://leetcode.com/problems/reorder-list/)
-
-### 1 способ:
-
-- мы двумя указателями идем по списку, когда один доходит до конца, другой останавливается на середине, затем мы переворачиваем весь оставшийся конец и затем идем от конца и начала списка и зигзагом сшиваем
 
 ```go
 func reorderList(head *ListNode) {
@@ -954,10 +843,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description)
 
-### 1 способ:
-
-- бинарным поиском проверяем отрезки, если левый меньше середины значит он упорядочен, если нет, значит правый упорядочен и ищем в них
-
 ```go
 func search(nums []int, target int) int {
 	left, right := 0, len(nums)-1
@@ -991,10 +876,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
 
-### 1 способ: 
-
-- через бинарный поиск сужаем наше окно до тех пор пока не найдем излом
-
 ```go
 func findMin(nums []int) int {
 	left, right := 0, len(nums)-1
@@ -1017,10 +898,6 @@ space complexity:$$ O(1) $$
 ---
 ## [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description)
 
-### 1 способ: 
-
-- рекурсивно проходим по самому левому, если не находим ответ то идем вправо и вот так перебираем значения и уменьшаем счетчик, если счетчик 0, то мы нашли ответ, просто перебираем ветви слева направо
-
 ```go
 func kthSmallest(root *TreeNode, k int) int {
 	return InOrderTravel(root, &k)
@@ -1042,10 +919,6 @@ space complexity:$$ O(h) $$
 ---
 ## [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree)
 
-### 1 способ:
-
-- делаем дфс, и задаем границы и создаем некий коридор чтобы значения узла находилось между этими границами иначе дерево не валидно
-
 ```go
 func isValidBST(root *TreeNode) bool {
 	return isValid(root, nil, nil)
@@ -1063,10 +936,6 @@ space complexity:$$ O(h) $$
 
 ---
 ## [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal)
-
-### 1 способ:
-
-- с помощью бфс проходим и передаем через указатели текущий уровень и наш двумерный массив, и добавляем значения по индексам = уровень
 
 ```go
 func levelOrder(root *TreeNode) [][]int {
@@ -1093,10 +962,6 @@ space complexity:$$ O(h) $$
 
 ---
 ## [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description)
-
-### 1 способ:
-
-- у нас всегда первый узел в preorder это корневой узелй у поддерева, поэтому мы потом ищем по какому индексу хранится в inorder корневой узел, где слева от узла вся левая ветка, справа вся правая ветка и тогда строим дерево рекурсивно передавая массива
 
 ```go
 func buildTree(preorder, inorder []int) *TreeNode {
@@ -1125,10 +990,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree)
 
-### 1 способ:
-
-- при помощи дфс находим корневой узел, просто погружаемся влево и вправо, как только у нас нашелся рез рекурсия вернет корневой узел и просто возвращаем где нашлось
-
 ```go
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil { return nil }
@@ -1151,10 +1012,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree)
 
-### 1 способ:
-
-- если оба узла меньше корня то идти влево по дереву, если больше то вправо, если разошлись то вернуть корень)
-
 ```go
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	for root != nil {
@@ -1174,10 +1031,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Number of Islands](https://leetcode.com/problems/number-of-islands/description)
-
-### 1 способ: 
-
-- идти двойным циклом по всему массиву, если нашли 1 то запускаем dfs алгоритм и затапливаем весь остров путем замены 1 на 0
 
 ```go
 func numIslands(grid [][]byte) int {
@@ -1210,10 +1063,6 @@ space complexity:$$ O(n \cdot m) $$
 ---
 ## [Clone Graph](https://leetcode.com/problems/clone-graph)
 
-### 1 способ:
-
-- дфс делаем и добавляем не пройденный узел в список соседей
-
 ```go
 func cloneGraph(node *Node) *Node {
 	if node == nil { return nil }
@@ -1240,10 +1089,6 @@ space complexity:$$ O(E) $$
 
 ---
 ## [Course Schedule](https://leetcode.com/problems/course-schedule)
-
-### 1 способ:
-
-- короче завести два массива, по индексу 0 мы будем класть все курсы которые нам становятся доступны после прохождения курса 0 и тд, во втором массиве мы считаем сколько курсов нужно пройти для каждого курса
 
 ```go
 func canFinish(numCourses int, prerequisites [][]int) bool {
@@ -1283,10 +1128,6 @@ space complexity:$$ O(V+E) $$
 
 ---
 ## [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/description)
-
-### 1 способ:
-
-- пиздец
 
 ```go
 func pacificAtlantic(heights [][]int) [][]int {
@@ -1343,10 +1184,6 @@ space complexity:$$ O(n \cdot m) $$
 ---
 ## [Generate Parentheses](https://leetcode.com/problems/generate-parentheses)
 
-### 1 способ:
-
-- рекурсивно записываем открывающиеся скобки до тех пор пока их меньше входного параметра и записываем закрывающиеся если их меньше чем открывающихся
-
 ```go
 func generateParenthesis(n int) []string {
 	result := []string{}
@@ -1373,10 +1210,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Combination Sum](https://leetcode.com/problems/combination-sum/description)
-
-### 1 способ:
-
--  Идея заключается в рекурсивном обходе дерева решений (backtracking), где на каждом шаге мы либо добавляем текущее число в комбинацию и уменьшаем искомую сумму, либо переходим к следующему числу, «откатываясь» назад при превышении лимита или достижении цели.
 
 ```go
 func combinationSum(candidates []int, target int) [][]int {
@@ -1410,10 +1243,6 @@ space complexity:$$ O(T/M) $$
 
 ---
 ## [Word Search](https://leetcode.com/problems/word-search)
-
-### 1 способ:
-
-- при помощи дфс просто проверяем буквы во всех направлениях
 
 ```go
 func exist(board [][]byte, word string) bool {
@@ -1454,10 +1283,6 @@ time complexity:$$ O(N \cdot M \cdot 3^L) $$space complexity:$$ O(N \cdot M) $$
 ---
 ## [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description)
 
-### 1 способ:
-
-- создаем массив и потом по нему бегаем собираем последовательности
-
 ```go
 func longestConsecutive(nums []int) int {
 	if len(nums) == 0 { return 0 }
@@ -1491,10 +1316,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Perfect Squares](https://leetcode.com/problems/perfect-squares/description/)
 
-### 1 способ: 
-
-- мы создаем мапу в которой будем сохранять для каждого числа за сколько квадратом мы дошли до этого числа а затем выводим ответ для нашего числа
-
 ```go
 func numSquares(n int) int {
 	seen := make([]int, n+1)
@@ -1518,10 +1339,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Unique Paths](https://leetcode.com/problems/unique-paths/description)
 
-### 1 способ:
-
-- оч крутой способ через подсчет просто сочетания
-
 ```go 
 func uniquePaths(m, n int) int {
 	result := 1
@@ -1536,10 +1353,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Decode Ways](https://leetcode.com/problems/decode-ways/description)
-
-### 1 способ:
-
--  создаем функцию которая проверяет может ли быть эта подстрока буквой, еще одну функцию которая создает дерево разветвлений от слова и затем считаем их
 
 ```go
 func isValid(code, length int) bool {
@@ -1578,10 +1391,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Word Break](https://leetcode.com/problems/word-break)
 
-### 1 способ:
-
-- создаем мапу со словами которые есть в нашем соваре, а затем двумя циклами бежим по нашей строке и проверяем можем ли мы дойти до каждой точкипри помощи слов в словаре, цикл движется до конца, вложенный движется от первого указателя в начало
-
 ```go
 func wordBreak(s string, wordDict []string) bool {
 	wordMap := make(map[string]bool)
@@ -1613,10 +1422,6 @@ space complexity:$$ O(n) $$
 ---
 ## [House Robber](https://leetcode.com/problems/house-robber/description)
 
-### 1 способ: 
-
-- при помощи динамического программирования проходимся  по всему массиву и если куш от этого дома меньше чем от предыдущего то пропускаем при помощи нахождения максимума
-
 ```go 
 func rob(nums []int) int {
 	if len(nums) == 1 { return nums[0] }
@@ -1632,10 +1437,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description)
-
-### 1 способ:
-
-- алгоритм манахера мы идем по каждому значению и проводим от него палиндром если он находится не в зеркальной теме, если находится то сразу пиздим у зеркального товарища нашего длину палиндрома, если мы вышли за границу, то обнуляем правый край и передвигаем центр
 
 ```go
 func longestPalindrome(s string) string {
@@ -1672,10 +1473,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/description)
 
-### 1 способ:
-
-- по алгоритму манахера собираем количество палиндромов
-
 ```go
 func countSubstrings(s string) int {
 	template := "^#" + strings.Join(strings.Split(s, ""), "#") + "#$"
@@ -1704,10 +1501,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description)
 
-### 1 способ:
-
-- мы создаем массив в котором последовательно сохраняем сколько схожих элементов у нас совпало, если совпало то берем предыдущее и +1, если нет, то берем максимум
-
 ```go
 func longestCommonSubsequence(text1, text2 string) int {
 	seen := make([][]int, len(text1)+1)
@@ -1733,10 +1526,6 @@ space complexity:$$ O(n \cdot m) $$
 
 ---
 ## [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence)
-
-### 1 способ:
-
-- собираем подпоследовательность, расширяем если крайний элемент меньше найденного, если нет то ищем индекс на который можем поставить найденное число
 
 ```go
 func lengthOfLIS(nums []int) int {
@@ -1773,10 +1562,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Coin Change](https://leetcode.com/problems/coin-change/description)
 
-### 1 способ:
-
-- при помощи подходи динамического программирования создаем вспомогательный массив в котором сохраняем все суммы до нашей цели сколько минимум монет понадобилось для промежуточной суммы
-
 ```go
 func coinChange(coins []int, amount int) int {
 	seen := make([]int, amount+1)
@@ -1801,10 +1586,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Simplify Path](https://leetcode.com/problems/simplify-path/description)
 
-### 1 способ:
-
-- при помощи стека, сначала сплитуем по слешу, затем пробегаемся по значениям, пропускаем мусор в виде . и пустых значений, а затем складываем в результат и джоин прописываем
-
 ```go
 func simplifyPath(path string) string {
 	afterSplit := strings.Split(path, "/")
@@ -1828,10 +1609,6 @@ space complexity:$$ O(n) $$
 
 ---
 ## [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation)
-
-### 1 способ:
-
-- при помощи стека, завести словарь с операторами в ключах и функциями в значениях, и потом стеком проходить по строке и вычислять значение
 
 ```go
 func evalRPN(tokens []string) int {
@@ -1861,10 +1638,6 @@ space complexity:$$ O(n) $$
 ---
 ## [Implement Rand10() Using Rand7()](https://leetcode.com/problems/implement-rand10-using-rand7/description)
 
-### 1 способ: 
-
-- Я генерирую число от 1 до 49 через два `rand7()`, беру только диапазон до 40, чтобы делилось на 10, и через `% 10` равномерно маплю в 1..10. Остальные значения отбрасываю.
-
 ```go
 func rand10() int {
 	for {
@@ -1880,10 +1653,6 @@ space complexity:$$ O(1) $$
 
 ---
 ## [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers)
-
-### 1 способ:
-
-- Алгоритм имитирует сложение в столбик: XOR даёт сумму без переноса, AND + сдвиг вычисляет перенос. Процесс повторяется, пока переносы не исчезнут.
 
 ```go
 func getSum(a, b int) int {
