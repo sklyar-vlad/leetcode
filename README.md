@@ -1,9 +1,33 @@
-# List of solved tasks from leetcode 
+# LeetCode Solutions
 
-profile: [sklyarvlad](https://leetcode.com/u/sklyarvlad)
+## 👤 Profile
 
-## <mark style="background: #BBFABBA6;">Easy</mark>
+- 🔗 https://leetcode.com/u/sklyarvlad
 
-### <mark style="background: #ADCCFFA6;">Array</mark>
+---
 
-* [[Two Sum]]
+## 📊 Progress
+| Difficulty | Count |
+| ---------- | ----- |
+| 🟢 Easy    | 1     |
+| 🟡 Medium  | 0     |
+| 🔴 Hard    | 0     |
+
+---
+
+## 🟢 Easy
+
+### 📦 Array
+
+1. [Two Sum](https://github/sklyar-vlad/leetcode/tree/main/easy/array.md)
+
+---
+
+## 🟡 Medium
+
+---
+
+## 🔴 Hard
+
+---
+

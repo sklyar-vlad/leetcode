@@ -1,6 +1,6 @@
 ## [Two Sum](https://leetcode.com/problems/two-sum/description/)
 
-![[Two Sum.png.png]]
+![[Two Sum.png]]
 
 **Solution:**
 
@@ -19,7 +19,7 @@ func twoSum(nums []int, target int) []int {
 }
 ```
 
-![[Two Sum solved.png.png]]
+![[Two Sum solved.png]]
 
 ### Time complexity: 
 $$ O(n) $$
