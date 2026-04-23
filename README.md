@@ -13,7 +13,7 @@
 | 🔴 Hard    | 0     |
 
 ---
-## 🟢 Easy
+## 🟢 [Easy](./easy/EASY.md)
 
 ### 📦 Array
 
@@ -23,14 +23,14 @@
 
 
 ---
-## 🟡 Medium
+## 🟡 [Medium](./medium/MEDIUM.md)
 
 1. soon...
 2. 
 
 
 ---
-## 🔴 Hard
+## 🔴 [Hard](./hard/HARD.md)
 
 1. soon...
 2. 
