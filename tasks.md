@@ -14,68 +14,67 @@
 10. ==Plus One==
 11. ==Remove Duplicates from Sorted Array==
 12. ==Remove Element==
-13. Find All Numbers Disappeared in an Array
-14. Third Maximum Number
-15. Find Pivot Index
-16. Best Time to Buy and Sell Stock
-17. Maximum Subarray
-18. Pascal's Triangle
-19. Pascal's Triangle II
-20. Summary Ranges
-21. Monotonic Array
-22. Sort Array By Parity
-23. Sort Array By Parity II
-24. Squares of a Sorted Array
-25. Height Checker
-26. Relative Sort Array
-27. Unique Number of Occurrences
-28. Find Lucky Integer in an Array
-29. Number of Good Pairs
-30. Kids With the Greatest Number of Candies
-31. Shuffle the Array
-32. Running Sum of 1d Array
-33. Richest Customer Wealth
-34. Concatenation of Array
-35. Build Array from Permutation
-36. Final Value of Variable After Performing Operations
-37. Maximum Number of Words Found in Sentences
-38. Left and Right Sum Differences
-39. Find the Highest Altitude
-40. Count Items Matching a Rule
-41. Smaller Numbers Than Current
-42. How Many Numbers Are Smaller Than the Current Number
-43. Decompress Run-Length Encoded List
-44. Create Target Array in the Given Order
-45. Check If N and Its Double Exist
-46. Valid Mountain Array
-47. Duplicate Zeros
-48. Replace Elements with Greatest Element on Right Side
-49. Keep Multiplying Found Values by Two
-50. Check if Array Is Sorted and Rotated
-51. Make Two Arrays Equal by Reversing Subarrays
-52. Find the Difference of Two Arrays
-53. Find the Prefix Common Array of Two Arrays
-54. Count Common Words With One Occurrence
-55. Number of Employees Who Met the Target
-56. Find Maximum Number of String Pairs
-57. Find Words Containing Character
-58. Split the Array
-59. Count Pairs Whose Sum is Less than Target
-60. Find the Array Concatenation Value
-61. Find Smallest Letter Greater Than Target
-62. Find Numbers with Even Number of Digits
-63. Majority Element
-64. Missing Number
-65. Monotonic Array
-66. Richest Customer Wealth
-67. Number of Good Pairs
-68. Kids With the Greatest Number of Candies
-69. Shuffle the Array
-70. Build Array from Permutation
-71. Final Value of Variable After Performing Operations
-72. Count Items Matching a Rule
-73. Smaller Numbers Than Current
-74. Create Target Array in the Given Order
+13. ==Find All Numbers Disappeared in an Array==
+14. ==Third Maximum Number==
+15. ==Find Pivot Index==
+16. ==Best Time to Buy and Sell Stock==
+17. ==Pascal's Triangle==
+18. ==Pascal's Triangle II==
+19. Summary Ranges
+20. Monotonic Array
+21. Sort Array By Parity
+22. Sort Array By Parity II
+23. Squares of a Sorted Array
+24. Height Checker
+25. Relative Sort Array
+26. Unique Number of Occurrences
+27. Find Lucky Integer in an Array
+28. Number of Good Pairs
+29. Kids With the Greatest Number of Candies
+30. Shuffle the Array
+31. Running Sum of 1d Array
+32. Richest Customer Wealth
+33. Concatenation of Array
+34. Build Array from Permutation
+35. Final Value of Variable After Performing Operations
+36. Maximum Number of Words Found in Sentences
+37. Left and Right Sum Differences
+38. Find the Highest Altitude
+39. Count Items Matching a Rule
+40. Smaller Numbers Than Current
+41. How Many Numbers Are Smaller Than the Current Number
+42. Decompress Run-Length Encoded List
+43. Create Target Array in the Given Order
+44. Check If N and Its Double Exist
+45. Valid Mountain Array
+46. Duplicate Zeros
+47. Replace Elements with Greatest Element on Right Side
+48. Keep Multiplying Found Values by Two
+49. Check if Array Is Sorted and Rotated
+50. Make Two Arrays Equal by Reversing Subarrays
+51. Find the Difference of Two Arrays
+52. Find the Prefix Common Array of Two Arrays
+53. Count Common Words With One Occurrence
+54. Number of Employees Who Met the Target
+55. Find Maximum Number of String Pairs
+56. Find Words Containing Character
+57. Split the Array
+58. Count Pairs Whose Sum is Less than Target
+59. Find the Array Concatenation Value
+60. Find Smallest Letter Greater Than Target
+61. Find Numbers with Even Number of Digits
+62. Majority Element
+63. Missing Number
+64. Monotonic Array
+65. Richest Customer Wealth
+66. Number of Good Pairs
+67. Kids With the Greatest Number of Candies
+68. Shuffle the Array
+69. Build Array from Permutation
+70. Final Value of Variable After Performing Operations
+71. Count Items Matching a Rule
+72. Smaller Numbers Than Current
+73. Create Target Array in the Given Order
 
 ### Two Pointers
 
@@ -376,35 +375,36 @@
 28. Number of Sub-arrays With Odd Sum
 29. Count Number of Nice Subarrays
 30. Fruit Into Baskets
-31. Maximum Product Subarray
-32. Maximum Sum Circular Subarray
-33. Jump Game
-34. Jump Game II
-35. Gas Station
-36. Partition Array According to Given Pivot
-37. Rearrange Array Elements by Sign
-38. Find Original Array From Doubled Array
-39. Reduction Operations to Make the Array Elements Equal
-40. K Radius Subarray Averages
-41. Sum of Even Numbers After Queries
-42. Minimum Number of Operations to Make Array Empty
-43. Minimum Operations to Reduce X to Zero
-44. Destroy Sequential Targets
-45. Equal Row and Column Pairs
-46. Count Servers that Communicate
-47. Matrix Block Sum
-48. Image Overlap
-49. Number of Distinct Islands
-50. Subarray Product Less Than K
-51. Number of Subarrays with Bounded Maximum
-52. Missing Ranges
-53. First Missing Positive
-54. Majority Element II
-55. Find the Winner of an Array Game
-56. The K Weakest Rows in a Matrix
-57. Determine if Two Strings Are Close
-58. Maximum Points You Can Obtain from Cards
-59. Shortest Unsorted Continuous Subarray
+31. Maximum Subarray
+32. Maximum Product Subarray
+33. Maximum Sum Circular Subarray
+34. Jump Game
+35. Jump Game II
+36. Gas Station
+37. Partition Array According to Given Pivot
+38. Rearrange Array Elements by Sign
+39. Find Original Array From Doubled Array
+40. Reduction Operations to Make the Array Elements Equal
+41. K Radius Subarray Averages
+42. Sum of Even Numbers After Queries
+43. Minimum Number of Operations to Make Array Empty
+44. Minimum Operations to Reduce X to Zero
+45. Destroy Sequential Targets
+46. Equal Row and Column Pairs
+47. Count Servers that Communicate
+48. Matrix Block Sum
+49. Image Overlap
+50. Number of Distinct Islands
+51. Subarray Product Less Than K
+52. Number of Subarrays with Bounded Maximum
+53. Missing Ranges
+54. First Missing Positive
+55. Majority Element II
+56. Find the Winner of an Array Game
+57. The K Weakest Rows in a Matrix
+58. Determine if Two Strings Are Close
+59. Maximum Points You Can Obtain from Cards
+60. Shortest Unsorted Continuous Subarray
 
 ### Two Pointers
 

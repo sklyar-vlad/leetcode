@@ -15,3 +15,6 @@
 | 13  | Find All Numbers Disappeared in an Array | 📦 Array/HashMap | [📄 Go](./array/findAllNumbersDisappearedInAnArray/findAllNumbersDisappearedInAnArray.md) |
 | 14  | Third Maximum Number                     | 📦 Array/HashMap | [📄 Go](./array/thirdMaximumNumber/thirdMaximumNumber.md)                                 |
 | 15  | Find Pivot Index                         | 📦 Array/HashMap | [📄 Go](./array/findPivotIndex/findPivotIndex.md)                                         |
+| 16  | Best Time to Buy and Sell Stock          | 📦 Array/HashMap | [📄 Go](./array/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.md)                   |
+| 17  | Pascal's Triangle                        | 📦 Array/HashMap | [📄 Go](./array/pascalsTriangle/pascalsTriangle.md)                                       |
+| 18  | Pascal's Triangle II                     | 📦 Array/HashMap | [📄 Go](./array/pascalsTriangleII/pascalsTriangleII.md)                                   |
