@@ -20,9 +20,9 @@
 16. ==Best Time to Buy and Sell Stock==
 17. ==Pascal's Triangle==
 18. ==Pascal's Triangle II==
-19. Summary Ranges
-20. Monotonic Array
-21. Sort Array By Parity
+19. ==Summary Ranges==
+20. ==Monotonic Array==
+21. ==Sort Array By Parity==
 22. Sort Array By Parity II
 23. Squares of a Sorted Array
 24. Height Checker

@@ -18,3 +18,6 @@
 | 16  | Best Time to Buy and Sell Stock          | 📦 Array/HashMap | [📄 Go](./array/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.md)                   |
 | 17  | Pascal's Triangle                        | 📦 Array/HashMap | [📄 Go](./array/pascalsTriangle/pascalsTriangle.md)                                       |
 | 18  | Pascal's Triangle II                     | 📦 Array/HashMap | [📄 Go](./array/pascalsTriangleII/pascalsTriangleII.md)                                   |
+| 19  | Summary Ranges                           | 📦 Array/HashMap | [📄 Go](./array/summaryRanges/summaryRanges.md)                                           |
+| 20  | Monotonic Array                          | 📦 Array/HashMap | [📄 Go](./array/monotonicArray/monotonicArray.md)                                         |
+| 21  | Sort Array By Parity                     | 📦 Array/HashMap | [📄 Go](./array/sortArrayByParity/sortArrayByParity.md)                                   |
