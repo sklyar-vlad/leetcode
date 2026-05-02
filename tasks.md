@@ -23,9 +23,9 @@
 19. ==Summary Ranges==
 20. ==Monotonic Array==
 21. ==Sort Array By Parity==
-22. Sort Array By Parity II
-23. Squares of a Sorted Array
-24. Height Checker
+22. ==Sort Array By Parity II==
+23. ==Squares of a Sorted Array==
+24. ==Height Checker==
 25. Relative Sort Array
 26. Unique Number of Occurrences
 27. Find Lucky Integer in an Array
